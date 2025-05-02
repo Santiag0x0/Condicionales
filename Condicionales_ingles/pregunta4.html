@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 4 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+      color: #2e7d32;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #1b5e20;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      font-size: 1.1rem;
+      width: 250px;
+      border: 2px solid #388e3c;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .correct {
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      color: #c62828;
+    }
+
+    .verify-button {
+      margin-top: 1.5rem;
+      background-color: #66bb6a;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .verify-button:hover {
+      background-color: #43a047;
+      transform: scale(1.05);
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #388e3c;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 4</h1>
+  <div class="question">
+    If you touch fire, it <strong>________</strong> you.
+  </div>
+
+  <input type="text" id="userAnswer" placeholder="Escribe tu respuesta aquí" />
+  <div class="feedback" id="feedback"></div>
+
+  <br>
+  <button class="verify-button" onclick="checkInput()">Verificar</button>
+  <br>
+  <button class="next-button" onclick="location.href='pregunta5.html'">Siguiente pregunta ➡️</button>
+
+  <script>
+    function checkInput() {
+      const input = document.getElementById("userAnswer");
+      const feedback = document.getElementById("feedback");
+      const nextButton = document.querySelector(".next-button");
+      const answer = input.value.trim().toLowerCase();
+
+      if (!answer) {
+        feedback.textContent = "Por favor escribe una respuesta.";
+        feedback.className = "feedback incorrect";
+        return;
+      }
+
+      if (answer === "burns") {
+        feedback.innerHTML = "<span class='emoji'>✔️</span> ¡Correcto!";
+        feedback.className = "feedback correct";
+        nextButton.style.display = "inline-block";
+        input.disabled = true;
+      } else {
+        feedback.innerHTML = "<span class='emoji'>❌</span> Incorrecto. La respuesta correcta es: <strong>burns</strong>";
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>

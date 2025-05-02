@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 12 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fffde7, #fff9c4);
+      color: #f57f17;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #f9a825;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .options button {
+      display: block;
+      margin: 1rem auto;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      width: 50%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 2px solid #fdd835;
+      background-color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .options button:hover {
+      background-color: #fff9c4;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      border-color: #388e3c !important;
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      border-color: #d32f2f !important;
+      color: #b71c1c;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #fdd835;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 12</h1>
+  <div class="question">
+    "If you mix yellow and blue, you get green." — ¿Es este un hecho real?
+  </div>
+
+  <div class="options">
+    <button onclick="checkAnswer(this, true)">A) Sí</button>
+    <button onclick="checkAnswer(this, false)">B) No</button>
+  </div>
+
+  <div id="feedback" class="feedback"></div>
+  <button class="next-button" onclick="location.href='pregunta13.html'">Siguiente pregunta ➡️</button>
+
+  <script>
+    let answered = false;
+
+    function checkAnswer(button, isCorrect) {
+      if (answered) return;
+      answered = true;
+
+      if (isCorrect) {
+        button.classList.add("correct");
+        document.getElementById("feedback").innerHTML = "<span class='emoji'>✔️</span> ¡Correcto! Es un hecho real.";
+      } else {
+        button.classList.add("incorrect");
+        document.getElementById("feedback").innerHTML = "<span class='emoji'>❌</span> Incorrecto. Sí es un hecho real.";
+      }
+
+      document.querySelector(".next-button").style.display = "inline-block";
+    }
+  </script>
+</body>
+</html>

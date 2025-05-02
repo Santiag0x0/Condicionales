@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 6 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f3e5f5, #e1f5fe);
+      color: #6a1b9a;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4a148c;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      font-size: 1.1rem;
+      width: 280px;
+      border: 2px solid #8e24aa;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .correct {
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      color: #c62828;
+    }
+
+    .verify-button {
+      margin-top: 1.5rem;
+      background-color: #9575cd;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .verify-button:hover {
+      background-color: #7e57c2;
+      transform: scale(1.05);
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #4a148c;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 6</h1>
+  <div class="question">
+    If I had more money, I <strong>________</strong> a new laptop.
+  </div>
+
+  <input type="text" id="userAnswer" placeholder="Escribe tu respuesta aquí" />
+  <div class="feedback" id="feedback"></div>
+
+  <br>
+  <button class="verify-button" onclick="checkInput()">Verificar</button>
+  <br>
+  <button class="next-button" onclick="location.href='pregunta7.html'">Siguiente pregunta ➡️</button>
+
+  <script>
+    function checkInput() {
+      const input = document.getElementById("userAnswer");
+      const feedback = document.getElementById("feedback");
+      const nextButton = document.querySelector(".next-button");
+      const answer = input.value.trim().toLowerCase();
+
+      if (!answer) {
+        feedback.textContent = "Por favor escribe una respuesta.";
+        feedback.className = "feedback incorrect";
+        return;
+      }
+
+      if (answer === "would buy" || answer === "buy") {
+        feedback.innerHTML = "<span class='emoji'>✔️</span> ¡Correcto!";
+        feedback.className = "feedback correct";
+        nextButton.style.display = "inline-block";
+        input.disabled = true;
+      } else {
+        feedback.innerHTML = "<span class='emoji'>❌</span> Incorrecto. La respuesta correcta es: <strong>would buy</strong>";
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>

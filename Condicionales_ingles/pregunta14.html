@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 14 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f1f8e9, #c8e6c9);
+      color: #33691e;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #558b2f;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      font-size: 1.1rem;
+      width: 90%;
+      max-width: 600px;
+      border: 2px solid #7cb342;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .correct {
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      color: #c62828;
+    }
+
+    .verify-button {
+      margin-top: 1.5rem;
+      background-color: #aed581;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .verify-button:hover {
+      background-color: #9ccc65;
+      transform: scale(1.05);
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #558b2f;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 14</h1>
+  <div class="question">
+    Escribe una oración con <strong>Second Conditional</strong>.
+  </div>
+
+  <input type="text" id="userAnswer" placeholder="Ej: If I were rich, I would travel the world." />
+  <div class="feedback" id="feedback"></div>
+
+  <br>
+  <button class="verify-button" onclick="checkInput()">Verificar</button>
+  <br>
+  <button class="next-button" onclick="location.href='pregunta15.html'">Siguiente pregunta ➡️</button>
+
+  <script>
+    function checkInput() {
+      const inputEl = document.getElementById("userAnswer");
+      const feedback = document.getElementById("feedback");
+      const nextButton = document.querySelector(".next-button");
+      const answer = inputEl.value.trim().toLowerCase();
+
+      if (!answer) {
+        feedback.textContent = "Por favor escribe tu oración.";
+        feedback.className = "feedback incorrect";
+        return;
+      }
+
+      // Validar que contenga 'if' y 'would'
+      if (answer.includes("if") && answer.includes("would")) {
+        feedback.innerHTML = "<span class='emoji'>✔️</span> ¡Correcto!";
+        feedback.className = "feedback correct";
+        inputEl.disabled = true;
+        nextButton.style.display = "inline-block";
+      } else {
+        feedback.innerHTML = "<span class='emoji'>❌</span> Asegúrate de usar 'if' y 'would' en tu oración.";
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>

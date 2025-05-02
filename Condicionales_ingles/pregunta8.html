@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 8 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f3e5f5);
+      color: #880e4f;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ad1457;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      font-size: 1.1rem;
+      width: 80%;
+      max-width: 500px;
+      border: 2px solid #c2185b;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .correct {
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      color: #b71c1c;
+    }
+
+    .verify-button {
+      margin-top: 1.5rem;
+      background-color: #ec407a;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .verify-button:hover {
+      background-color: #d81b60;
+      transform: scale(1.05);
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #ad1457;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 8</h1>
+  <div class="question">
+    Corrige: <em>If I will go to the party, I will dance.</em>
+  </div>
+
+  <input type="text" id="userAnswer" placeholder="Escribe la frase corregida aquí" />
+  <div class="feedback" id="feedback"></div>
+
+  <br>
+  <button class="verify-button" onclick="checkInput()">Verificar</button>
+  <br>
+  <button class="next-button" onclick="location.href='pregunta9.html'">Siguiente pregunta ➡️</button>
+
+  <script>
+    function checkInput() {
+      const inputEl = document.getElementById("userAnswer");
+      const feedback = document.getElementById("feedback");
+      const nextButton = document.querySelector(".next-button");
+      let answer = inputEl.value.trim();
+      if (!answer) {
+        feedback.textContent = "Por favor escribe tu corrección.";
+        feedback.className = "feedback incorrect";
+        return;
+      }
+      // Eliminar punto final si existe
+      if (answer.endsWith(".")) {
+        answer = answer.slice(0, -1).trim();
+      }
+      const normalized = answer.toLowerCase();
+      const expected = "if i go to the party, i will dance";
+      if (normalized === expected) {
+        feedback.innerHTML = "<span class='emoji'>✔️</span> ¡Correcto!";
+        feedback.className = "feedback correct";
+        inputEl.disabled = true;
+        nextButton.style.display = "inline-block";
+      } else {
+        feedback.innerHTML = "<span class='emoji'>❌</span> Incorrecto. La corrección correcta es: <strong>If I go to the party, I will dance.</strong>";
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>

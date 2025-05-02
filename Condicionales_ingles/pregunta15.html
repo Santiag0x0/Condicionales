@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pregunta 15 - Conditionals Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffebee, #ffcdd2);
+      color: #b71c1c;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c62828;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .options button {
+      display: block;
+      margin: 1rem auto;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      width: 60%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 2px solid #e53935;
+      background-color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .options button:hover {
+      background-color: #ffcdd2;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      border-color: #388e3c !important;
+      color: #2e7d32;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      border-color: #d32f2f !important;
+      color: #b71c1c;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .next-button {
+      margin-top: 2rem;
+      display: none;
+      background-color: #e53935;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pregunta 15</h1>
+  <div class="question">
+    Unless you leave now, you ________ late.
+  </div>
+
+  <div class="options">
+    <button onclick="checkAnswer(this, false)">A) are</button>
+    <button onclick="checkAnswer(this, true)">B) will be</button>
+    <button onclick="checkAnswer(this, false)">C) were</button>
+    <button onclick="checkAnswer(this, false)">D) be</button>
+  </div>
+
+  <div id="feedback" class="feedback"></div>
+  <button class="next-button" onclick="location.href='thanks.html'">Ver resultados 🎉</button>
+
+  <script>
+    let answered = false;
+
+    function checkAnswer(button, isCorrect) {
+      if (answered) return;
+      answered = true;
+
+      if (isCorrect) {
+        button.classList.add("correct");
+        document.getElementById("feedback").innerHTML = "<span class='emoji'>✔️</span> ¡Correcto!";
+      } else {
+        button.classList.add("incorrect");
+        document.getElementById("feedback").innerHTML = "<span class='emoji'>❌</span> Incorrecto. La respuesta correcta es: <strong>will be</strong>";
+      }
+
+      document.querySelector(".next-button").style.display = "inline-block";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You for Playing!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe0b2, #ffccbc);
+      color: #5d4037;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background-color: #ffffffdd;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      color: #e64a19;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #bf360c;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem 1rem;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #bf360c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #d84315;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🎉</div>
+    <h1>Thank You for Playing!</h1>
+    <p>We hope you enjoyed the game and sharpened your English conditionals skills. Keep practicing and learning every day!</p>
+    <a href="index.html" class="btn">Back to Home</a>
+   
+  </div>
+</body>
+</html>
